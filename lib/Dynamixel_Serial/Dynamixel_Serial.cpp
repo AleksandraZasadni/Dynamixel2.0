@@ -1,3 +1,22 @@
+/*
+
+Version 2.2
+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+ */
 
 #include "Dynamixel_Serial.h"
 
@@ -67,6 +86,21 @@ void DynamixelClass::setGoalPosition(unsigned char ID, unsigned int pos) {
 
   writeN(ID, 0x74, arr, 4);
 }
+
+void DynamixelClass::setGoalPWM(unsigned char ID, unsigned int pwm) {
+
+	pwm %= 885;
+
+	unsigned char arr[] = {
+		(pwm & 0xFF),
+		(pwm & 0xFF00) >> 8,
+		(pwm & 0xFF0000) >> 16,
+		(pwm & 0xFF000000) >> 24
+	};
+
+	writeN(ID, 0x64, arr, 4);
+}
+
 
 void DynamixelClass::setGoalVelocity(unsigned char ID, unsigned int vel){
 
