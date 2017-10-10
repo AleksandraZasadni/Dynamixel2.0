@@ -28,7 +28,7 @@ public:
     void setHoldingTorque(unsigned char ID, bool Set);
     void setGoalPosition(unsigned char ID, unsigned int pos);
     void setGoalVelocity(unsigned char ID, unsigned int vel);
-	  void setGoalPWM(unsigned char ID, unsigned int pwm);
+    void setGoalPWM(unsigned char ID, unsigned int pwm);
 
     void setNGoalPositions(int m1, int m2, int m3, int m4, int m5);
 
